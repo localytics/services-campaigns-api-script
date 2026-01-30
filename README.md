@@ -34,7 +34,7 @@ Example output:
 ## Repository Structure
 
 ```
-push-campaign-creator/
+services-campaigns-API/
 ├── run.py          # Main script that executes the API requests
 ├── config.py       # campaign template + list of app IDs
 ├── .env            # API credentials
