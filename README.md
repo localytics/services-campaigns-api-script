@@ -5,7 +5,7 @@ This repository contains a simple Python script that creates **Push Campaigns** 
 The script is designed to:
 
 - Define a reusable **push campaign template**
-- Loop through a list of `app_id` values
+- Loop through a list of `app_key` values and their associated audiences
 - Apply per-app custom tweaks (optional overrides)
 - Create one campaign per app automatically
 
@@ -25,7 +25,7 @@ Example output:
 ```
 services-campaigns-api/
 ├── run.py          # Main script that executes the API requests
-├── config.py       # campaign template + list of app IDs
+├── config.py       # campaign template + list of app keys
 ├── .env            # API credentials
 └── README.md
 ```
@@ -124,13 +124,13 @@ apps_config = [
 ]
 ```
 
-##### Notes on apps_config: 
+#### Notes on apps_config: 
 
-You will find the App key for each app in the dashboard's Settings page
+- You will find the App key for each app in the dashboard's Settings page
 
-Make sure the audience_id specified under each app is accurate. If an audience with the specified audience ID does not exist for that app, the campaign will not be created for that app.
+- Make sure the audience_id specified under each app is accurate. If an audience with the specified audience ID does not exist for that app, the campaign will not be created for that app.
 
-You can double check an audience ID through the dashboard's Audiences page.
+- You can double check an audience ID through the dashboard's Audiences page.
 
 ---
 
@@ -145,6 +145,42 @@ python run.py
 The script will create a push campaign for every app listed in `apps_config`.
 
 
+---
+
+# Optional Overrides
+
+In the apps_config object, you can apply an `override` per-app custom tweaks to any of the top level objects in the template. So objects such as goal, conversion_event, audiences, creatives, etc.
+
+Utilizing this would be benificial if you need to send the same campaign for multiple apps, but with small changes between each app, such as a slightly different creative message or a different conversion event.
+
+The example below shows how you can override the creative as well as the conversion event for an app using `override`.
+
+```python
+{        
+    "app_id": "app-key-1",
+        "override": {
+            "creatives": [
+                            {
+                                "build_attributes": {
+                                    "push_title": "Hello!",
+                                    "push_message": "Custom message for app 1",
+                                    "ll_deep_link_url": "app://homescreen"
+                                }
+                            }
+                        ],
+            "conversion_event": {
+                "event_name": "Purchase Completed"
+            }
+        }
+}
+```
+
+
+#### Notes About Override
+
+Overrides will replace the entire top level object with the one you specify, so make sure you include all required parameters of an object when you override. That means overriding something like `creatives` will replace the entire creatives block for that app.
+
+This is intentional for simplicity.
 ---
 
 # Future Improvements
