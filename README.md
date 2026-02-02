@@ -59,12 +59,14 @@ https://www.python.org/downloads/windows/
 
 ✅ *Add Python to PATH*
 
-4. Verify installation: Open terminal (command prompt for Windows) and run the command below
+---
+#### Verify installation
+
+Open terminal (command prompt for Windows) and run the command below
 
 ```powershell
 python --version
 ```
----
 #### Note: This script was tested against Python version 3.14.2
 ---
 
@@ -87,7 +89,7 @@ pip install requests python-dotenv
 
 Download and unzip the repository files, then follow the instructions below.
 
-### 1. Add your Localytics API credentials and Org ID to the .env file
+### 1. Open .env file, add your Localytics API credentials and Org ID
 
 ```env
 API_KEY = your_api_key_here
@@ -97,15 +99,13 @@ ORG_ID = 123456
 
 ---
 
-### 2. Modify the config.py file
+### 2. Modify config.py file
 
-Open `config.py`
-
-You will find a basic Push campaign template object which creates a campaign targeting a saved audience. Please review this template object thoroughly, as this defines every configuration in your campaign, starting from the campaign's name and goal, and until the desired campaign scheduling, just like the dashboard.
+`config.py` contains a basic Push campaign template object which creates a campaign targeting a saved audience. Please review this template object thoroughly, as this defines every configuration in your campaign, starting from the campaign's name and goal, and until the desired campaign scheduling, just like the dashboard.
 
 You can modify the template object to match your desired campaign. e.g. change the push message title and body, as well as the conversion event for your campaign.
 
-Please refer to the [Campaigns API documentation](https://docs.localytics.com/campaigns_audiences_api.html) for clarification on the values accepted by the Campaigns API when modifying the template.
+For advanced modifications to the campaign template object, please refer to the [Campaigns API documentation](https://docs.localytics.com/campaigns_audiences_api.html) for clarification on the values accepted by the Campaigns API when modifying the template.
 
 
 Below the campaign_template, you will see a list of apps in the apps_config object. These are the apps which the script loops through to create a campaign for each app, targeting the specified audience for that app. 
