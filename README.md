@@ -138,12 +138,23 @@ apps_config = [
 
 # Running the Script
 
-Once everything is configured, open terminal and navigate to the repository's directory, and run the command below.
+Once everything is configured, follow the steps below to run the script:
 
-```bash
-python run.py
+- Open terminal (command prompt for Windows)
+- Navigate to where you saved the downloaded repository files using the `cd folder_name` command. (in the example below, my folder name is Downloads)
+- Run the script using the command `python run.py`
+
+An example for navigating to the script and running it is below:
+
 ```
+C:\Users\mgad>cd Downloads
+C:\Users\mgad\Downloads>cd services-campaigns-api-script
+C:\Users\mgad\Downloads\services-campaigns-api>python run.py
+✅ Created campaign for app <redacted>
+✅ Created campaign for app <redacted>
 
+C:\Users\mgad\Downloads\services-campaigns-api>
+```
 The script will create a push campaign for every app listed in `apps_config`.
 
 
@@ -151,22 +162,25 @@ The script will create a push campaign for every app listed in `apps_config`.
 
 # Optional Overrides
 
-In the apps_config object, you can apply an `override` per-app custom tweaks to any of the top level objects in the template. So objects such as goal, conversion_event, audiences, creatives, etc.
+In the apps_config object, you can `override` any of the campaign_template objects for each app separately. So objects such as conversion_event, audiences, creatives, etc.
 
 Utilizing this would be benificial if you need to send the same campaign for multiple apps, but with small changes between each app, such as a slightly different creative message or a different conversion event.
 
 The example below shows how you can override the creative as well as the conversion event for an app using `override`.
 
 ```python
-{        
-    "app_id": "app-key-1",
+apps_config = [
+
+    # app 1 config
+    {
+        "app_key": "app-1-key",
+        "audience_id":112233,
         "override": {
             "creatives": [
                             {
                                 "build_attributes": {
                                     "push_title": "Hello!",
-                                    "push_message": "Custom message for app 1",
-                                    "ll_deep_link_url": "app://homescreen"
+                                    "push_message": "Customized message for app 1",
                                 }
                             }
                         ],
@@ -174,15 +188,37 @@ The example below shows how you can override the creative as well as the convers
                 "event_name": "Purchase Completed"
             }
         }
-}
+    },
+    # app 2 config
+    {        
+        "app_key": "app-2-key",
+        "audience_id":223344,
+        "override": {
+            "creatives": [
+                            {
+                                "build_attributes": {
+                                    "push_title": "Hello!",
+                                    "push_message": "Customized message for app 2",
+                                }
+                            }
+                        ],
+            "conversion_event": {
+                "event_name": "Cart Abandoned"
+            }
+        }
+    }
+
+    # Add more apps here
+]
 ```
 
 
-#### Notes About Override
+#### Notes About Override:
 
 Overrides will replace the entire top level object with the one you specify, so make sure you include all required parameters of an object when you override. That means overriding something like `creatives` will replace the entire creatives block for that app.
 
 This is intentional for simplicity.
+
 ---
 
 # Future Improvements
