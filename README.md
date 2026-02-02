@@ -1,4 +1,4 @@
-# Localytics Push Campaign Creator
+# Localytics Campaigns API template script
 
 This repository contains a simple Python script that creates **Push Campaigns** in the Localytics dashboard using the Localytics **Campaigns API**.
 
@@ -9,24 +9,13 @@ The script is designed to:
 - Apply per-app custom tweaks (optional overrides)
 - Create one campaign per app automatically
 
-This makes it easy to launch the same campaign across multiple Localytics apps without manually recreating it in the dashboard.
-
----
-
-## What This Script Does
-
-When you run the script, it will:
-
-1. Load your Localytics credentials from a `.env` file  
-2. Load the campaign template from `config.py`  
-3. Loop through each app object in the config  
-4. Create a push campaign via the Localytics API for each `app_id`
+This makes it easy to launch the same campaign across multiple Localytics apps without manually recreating it in the dashboard, and with minimal configurational overhead.
 
 Example output:
 
 ```
-✅ Created campaign for app app-id-1
-✅ Created campaign for app app-id-2
+✅ Created campaign for app app-key-1
+✅ Created campaign for app app-key-2
 ```
 
 ---
@@ -34,7 +23,7 @@ Example output:
 ## Repository Structure
 
 ```
-services-campaigns-API/
+services-campaigns-api/
 ├── run.py          # Main script that executes the API requests
 ├── config.py       # campaign template + list of app IDs
 ├── .env            # API credentials
@@ -47,15 +36,9 @@ services-campaigns-API/
 
 ### 1. Install Python
 
-This script was tested against Python version 3.14.2
-
 ---
 
-### Python Installation Instructions
-
----
-
-### macOS
+#### macOS
 
 1. Download Python from:
 
@@ -65,7 +48,7 @@ https://www.python.org/downloads/mac-osx/
 
 ---
 
-### Windows
+#### Windows
 
 1. Download Python from:
 
@@ -81,6 +64,9 @@ https://www.python.org/downloads/windows/
 ```powershell
 python --version
 ```
+---
+#### Note: This script was tested against Python version 3.14.2
+---
 
 ### 2. Install Dependencies
 
@@ -89,7 +75,7 @@ This script requires two Python packages:
 - `requests`
 - `python-dotenv`
 
-Install them using the following pip command in terminal:
+Install them by opening terminal (or command prompt on Windows) and running following pip command:
 
 ```bash
 pip install requests python-dotenv
@@ -97,9 +83,9 @@ pip install requests python-dotenv
 
 ---
 
-# Setup Instructions
+## Script Setup Instructions
 
-## 1. Add your Localytics credentials to the .env file
+### 1. Add your Localytics API credentials and Org ID to the .env file
 
 ```env
 API_KEY = your_api_key_here
@@ -109,69 +95,52 @@ ORG_ID = 123456
 
 ---
 
-## Modify the config.py file
+### 2. Modify the config.py file
 
-Open `config.py`.
+Open `config.py`
 
-Modify the campaign_template object parameters to match your desired campaign.
+You will find a basic Push campaign template object which creates a campaign targeting a saved audience. Please review this template object thoroughly, as this defines every configuration in your campaign, starting from the campaign's name and goal, and until the desired campaign scheduling, just like the dashboard.
 
-Below the campaign_template, you will see a list of apps like this:
+You can modify the template object to match your desired campaign. e.g. change the push message title and body, as well as the conversion event for your campaign.
+
+Please refer to the [Campaigns API documentation](https://docs.localytics.com/campaigns_audiences_api.html) for clarification on the values accepted by the Campaigns API when modifying the template.
+
+
+Below the campaign_template, you will see a list of apps in the apps_config object. These are the apps which the script loops through to create a campaign for each app, targeting the specified audience for that app. You can add as many apps as you need.
 
 ```python
 apps_config = [
     {
-        "app_id": "app-id-1",
+        "app_key": "app-key-1",
+        "audience_id":123456
     },
     {
-        "app_id": "app-id-2",
+        "app_id": "app-key-2",
+        "audience_id":654321
     }
+    # add more apps here
 ]
 ```
 
-### Update the following:
+##### Notes on apps_config: 
 
-✅ Replace each `app_id` with a real Localytics App ID  
-✅ Optionally add overrides per app
+You will find the App key for each app in the dashboard's Settings page
 
-Example override:
+Make sure the audience_id specified under each app is accurate. If an audience with the specified audience ID does not exist for that app, the campaign will not be created for that app.
 
-```python
-{        
-    "app_id": "114fc59092317d183a20475-18623c38-39c0-11ec-bc11-007c928ca240",
-    "override": {
-        "audiences": {
-            "campaign_type": "saved_audience",
-            "control_group_percent": 5,
-            "target_rules": {
-            "audiences":[183512]
-            }
-        }
-    }
-}
-```
+You can double check an audience ID through the dashboard's Audiences page.
 
 ---
 
 # Running the Script
 
-Once everything is configured, run:
+Once everything is configured, open terminal and navigate to the repository's directory, and run the command below.
 
 ```bash
 python run.py
 ```
 
 The script will create a push campaign for every app listed in `apps_config`.
-
----
-
-## Notes About Overrides
-
-Overrides are applied to top level parameters:
-
-That means overriding something like `audiences` will replace the entire audiences block.
-
-
-This is intentional for simplicity.
 
 
 ---
@@ -180,5 +149,4 @@ This is intentional for simplicity.
 
 Possible future upgrades include:
 
-- Nested deep-merging overrides
-- Fetching audiences to verify they properly match app IDs
+- Fetching audiences to verify they properly match app IDs before creating campaigns
