@@ -85,6 +85,8 @@ pip install requests python-dotenv
 
 ## Script Setup Instructions
 
+Download and unzip the repository files, then follow the instructions below.
+
 ### 1. Add your Localytics API credentials and Org ID to the .env file
 
 ```env
