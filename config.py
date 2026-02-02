@@ -43,43 +43,13 @@ apps_config = [
 
     # app 1 config
     {        
-        "app_id": "app-1-id",
-        "override": {
-            "audiences": {
-                "campaign_type": "saved_audience",
-                "control_group_percent": 5,
-                "target_rules": {
-                # ensure the audience ID exists for the specified app_id
-                "audiences":[123456]
-                }
-            }
-        }
+        "app_key": "app-1-key",
+        "audience_id":123456
     },
     # app 2 config
     {
-        "app_id": "app-2-id",
-        "override": {
-            "audiences": {
-                "campaign_type": "saved_audience",
-                "control_group_percent": 5,
-                "target_rules": {
-                "audiences":[123456]
-                }
-            }
-        }
-    },
-    # app 3 config
-    {
-        "app_id": "app-3-id",
-        "override": {
-            "audiences": {
-                "campaign_type": "saved_audience",
-                "control_group_percent": 5,
-                "target_rules": {
-                "audiences":[123456]
-                }
-            }
-        }
+        "app_key": "app-2-key",
+        "audience_id":123456
     }
 
     # Add more apps here

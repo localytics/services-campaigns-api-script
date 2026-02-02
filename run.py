@@ -17,8 +17,15 @@ ORG_ID = os.getenv("ORG_ID")
 
 
 for app in config.apps_config:
-    app_id = app["app_id"]
+    app_key = app["app_key"]
     campaign_body = deepcopy(config.campaign_template)
+
+    # if saved audiences, replace the audience ID value for each app
+    if campaign_body.get("audiences", {}).get("campaign_type") == "saved_audience":
+
+        audience_id = app.get("audience_id")
+        campaign_body["audiences"]["target_rules"]["audiences"] = [audience_id]
+
 
     # apply overrides (shallow replace)
     for key, val in app.get("override", {}).items():
@@ -26,7 +33,7 @@ for app in config.apps_config:
 
     url = (
         f"https://dashboard.localytics.com/api/v6/"
-        f"orgs/{ORG_ID}/apps/{app_id}/push/campaigns"
+        f"orgs/{ORG_ID}/apps/{app_key}/push/campaigns"
     )
 
     response = requests.post(
@@ -37,9 +44,9 @@ for app in config.apps_config:
     )
 
     if response.status_code == 201:
-        print(f"✅ Created campaign for app {app_id}")
+        print(f"✅ Created campaign for app {app_key}")
     else:
         print(
-            f"❌ Failed for app {app_id} "
+            f"❌ Failed for app {app_key} "
             f"({response.status_code}): {response.text}"
         )
