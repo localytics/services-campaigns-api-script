@@ -113,11 +113,11 @@ Repalce the app_key and audience_id values with the proper values. You can add a
 ```python
 apps_config = [
     {
-        "app_key": "app-key-1",
+        "app_key": "app-1-key",
         "audience_id":123456
     },
     {
-        "app_id": "app-key-2",
+        "app_id": "app-2-key",
         "audience_id":654321
     }
     # add more apps here
