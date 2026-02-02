@@ -59,7 +59,7 @@ https://www.python.org/downloads/windows/
 
 ✅ *Add Python to PATH*
 
-4. Verify installation:
+4. Verify installation: Open terminal (command prompt for Windows) and run the command below
 
 ```powershell
 python --version
@@ -75,7 +75,7 @@ This script requires two Python packages:
 - `requests`
 - `python-dotenv`
 
-Install them by opening terminal (or command prompt on Windows) and running following pip command:
+Install them by opening terminal and running following command:
 
 ```bash
 pip install requests python-dotenv
@@ -140,7 +140,7 @@ apps_config = [
 
 Once everything is configured, follow the steps below to run the script:
 
-- Open terminal (command prompt for Windows)
+- Open terminal
 - Navigate to where you saved the downloaded repository files using the `cd folder_name` command. (in the example below, my folder name is Downloads)
 - Run the script using the command `python run.py`
 
