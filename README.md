@@ -106,7 +106,9 @@ You can modify the template object to match your desired campaign. e.g. change t
 Please refer to the [Campaigns API documentation](https://docs.localytics.com/campaigns_audiences_api.html) for clarification on the values accepted by the Campaigns API when modifying the template.
 
 
-Below the campaign_template, you will see a list of apps in the apps_config object. These are the apps which the script loops through to create a campaign for each app, targeting the specified audience for that app. You can add as many apps as you need.
+Below the campaign_template, you will see a list of apps in the apps_config object. These are the apps which the script loops through to create a campaign for each app, targeting the specified audience for that app. 
+
+Repalce the app_key and audience_id values with the proper values. You can add as many apps as you need.
 
 ```python
 apps_config = [
@@ -145,7 +147,7 @@ The script will create a push campaign for every app listed in `apps_config`.
 
 ---
 
-# Support / Future Improvements
+# Future Improvements
 
 Possible future upgrades include:
 
