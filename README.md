@@ -23,7 +23,7 @@ Example output:
 ## Repository Structure
 
 ```
-services-campaigns-api/
+services-campaigns-api-script/
 ├── run.py          # Main script that executes the API requests
 ├── config.py       # campaign template + list of app keys
 ├── .env            # API credentials
@@ -149,11 +149,11 @@ An example for navigating to the script and running it is below:
 ```
 C:\Users\mgad>cd Downloads
 C:\Users\mgad\Downloads>cd services-campaigns-api-script
-C:\Users\mgad\Downloads\services-campaigns-api>python run.py
+C:\Users\mgad\Downloads\services-campaigns-api-script>python run.py
 ✅ Created campaign for app <redacted>
 ✅ Created campaign for app <redacted>
 
-C:\Users\mgad\Downloads\services-campaigns-api>
+C:\Users\mgad\Downloads\services-campaigns-api-script>
 ```
 The script will create a push campaign for every app listed in `apps_config`.
 
