@@ -101,6 +101,9 @@ You can modify the template object to match your desired campaign. e.g. change t
 
 For advanced modifications to the campaign template object, please refer to the [Campaigns API documentation](https://docs.localytics.com/campaigns_audiences_api.html) for clarification on the values accepted by the Campaigns API when modifying the template.
 
+---
+
+#### App Keys
 
 Below the campaign_template, you will see a list of apps in the apps_config object. These are the apps which the script loops through to create a campaign for each app, targeting the specified audience for that app. 
 
