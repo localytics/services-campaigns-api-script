@@ -14,8 +14,8 @@ This makes it easy to launch the same campaign across multiple Localytics apps w
 Example output:
 
 ```
-✅ Created campaign for app app-key-1
-✅ Created campaign for app app-key-2
+✅ Created campaign for app app-1-key
+✅ Created campaign for app app-2-key
 ```
 
 ---
@@ -23,7 +23,7 @@ Example output:
 ## Repository Structure
 
 ```
-services-campaigns-api-script/
+services-campaigns-api-script-master/
 ├── run.py          # Main script that executes the API requests
 ├── config.py       # campaign template + list of app keys
 ├── .env            # API credentials
