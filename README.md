@@ -141,20 +141,25 @@ apps_config = [
 Once everything is configured, follow the steps below to run the script:
 
 - Open terminal
-- Navigate to where you saved the downloaded repository files using the `cd folder_name` command. (in the example below, my folder name is Downloads)
+- Navigate to where you saved the downloaded repository files using the `cd folder_path` command. (an example is shown below)
 - Run the script using the command `python run.py`
 
+Since the script is saved inside my Downloads folder, I ran the following command in terminal to navigate to the script: 
 
-#### Note: If you download the repository as a zip file, the exported repository folder will be named services-campaigns-api-script-master
+`cd Downloads\services-campaigns-api-script-master`
+
+Followed by the command to run the script:
+
+`python run.py`
+
 
 ```
-C:\Users\mgad>cd Downloads
-C:\Users\mgad\Downloads>cd services-campaigns-api-script
-C:\Users\mgad\Downloads\services-campaigns-api-script>python run.py
+C:\Users\mgad>cd Downloads\services-campaigns-api-script-master
+C:\Users\mgad\Downloads\services-campaigns-api-script-master>python run.py
 ✅ Created campaign for app <redacted>
 ✅ Created campaign for app <redacted>
 
-C:\Users\mgad\Downloads\services-campaigns-api-script>
+C:\Users\mgad\Downloads\services-campaigns-api-script-master>
 ```
 The script will create a push campaign for every app listed in `apps_config`.
 
