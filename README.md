@@ -110,7 +110,7 @@ For advanced modifications to the campaign template object, please refer to the 
 
 Below the campaign_template, you will see a list of apps in the apps_config object. These are the apps which the script loops through to create a campaign for each app, targeting the specified audience for that app. 
 
-Repalce the app_key and audience_id values with the proper values. You can add as many apps as you need.
+Replace the app_key and audience_id values with the proper values. You can add as many apps as you need.
 
 ```python
 apps_config = [
@@ -119,7 +119,7 @@ apps_config = [
         "audience_id":123456
     },
     {
-        "app_id": "app-2-key",
+        "app_key": "app-2-key",
         "audience_id":654321
     }
     # add more apps here
@@ -170,7 +170,7 @@ The script will create a push campaign for every app listed in `apps_config`.
 
 In the apps_config object, you can `override` any of the campaign_template objects for each app separately. So objects such as conversion_event, audiences, creatives, etc.
 
-Utilizing this would be benificial if you need to send the same campaign for multiple apps, but with small changes between each app, such as a slightly different creative message or a different conversion event.
+Utilizing this would be beneficial if you need to send the same campaign for multiple apps, but with small changes between each app, such as a slightly different creative message or a different conversion event.
 
 The example below shows how you can override the creative as well as the conversion event for an app using `override`.
 
