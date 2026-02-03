@@ -154,12 +154,12 @@ Followed by the command to run the script:
 
 
 ```
-C:\Users\mgad>cd Downloads\services-campaigns-api-script-master
-C:\Users\mgad\Downloads\services-campaigns-api-script-master>python run.py
+C:\Users\username>cd Downloads\services-campaigns-api-script-master
+C:\Users\username\Downloads\services-campaigns-api-script-master>python run.py
 ✅ Created campaign for app <redacted>
 ✅ Created campaign for app <redacted>
 
-C:\Users\mgad\Downloads\services-campaigns-api-script-master>
+C:\Users\username\Downloads\services-campaigns-api-script-master>
 ```
 The script will create a push campaign for every app listed in `apps_config`.
 
