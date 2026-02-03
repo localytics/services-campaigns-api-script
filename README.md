@@ -40,9 +40,7 @@ services-campaigns-api-script-master/
 
 #### macOS
 
-1. Download Python from:
-
-https://www.python.org/downloads/mac-osx/
+1. Download Python from: https://www.python.org/downloads/mac-osx/
 
 2. Run the installer  
 
@@ -50,14 +48,10 @@ https://www.python.org/downloads/mac-osx/
 
 #### Windows
 
-1. Download Python from:
-
-https://www.python.org/downloads/windows/
+1. Download Python from: https://www.python.org/downloads/windows/
 
 2. Run the installer  
-3. **Important:** Check the box:
-
-✅ *Add Python to PATH*
+3. **Important:** Check the box while installing: ✅ *Add Python to PATH*
 
 ---
 #### Verify installation
