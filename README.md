@@ -144,7 +144,6 @@ Once everything is configured, follow the steps below to run the script:
 - Navigate to where you saved the downloaded repository files using the `cd folder_name` command. (in the example below, my folder name is Downloads)
 - Run the script using the command `python run.py`
 
-An example for navigating to the script and running it is below.
 
 #### Note: If you download the repository as a zip file, the exported repository folder will be named services-campaigns-api-script-master
 
