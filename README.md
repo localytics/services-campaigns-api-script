@@ -74,7 +74,7 @@ This script requires two Python packages:
 Install them by opening terminal and running following command:
 
 ```bash
-pip install requests python-dotenv
+pip install -r requirements.txt
 ```
 
 ---
