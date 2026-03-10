@@ -56,11 +56,17 @@ services-campaigns-api-script-master/
 ---
 #### Verify installation
 
-Open terminal (command prompt for Windows) and run the command below
+On Mac, open terminal and run the command below:
+
+```powershell
+python3 --version
+```
+On Windows, open Command Prompt and run the command below:
 
 ```powershell
 python --version
 ```
+
 #### Note: This script was tested against Python version 3.14.2
 ---
 
@@ -72,6 +78,11 @@ This script requires two Python packages:
 - `python-dotenv`
 
 Install them by opening terminal and running following command:
+
+```bash
+pip3 install -r requirements.txt
+```
+On Windows:
 
 ```bash
 pip install -r requirements.txt
