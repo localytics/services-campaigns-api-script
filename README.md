@@ -67,7 +67,7 @@ On Windows, open Command Prompt and run the command below:
 python --version
 ```
 
-#### Note: This script was tested against Python version 3.14.2
+#### Note: This script was tested against Python 3
 ---
 
 ### 2. Install Dependencies
@@ -157,6 +157,10 @@ Since the script is saved inside my Downloads folder, I ran the following comman
 `cd Downloads\services-campaigns-api-script-master`
 
 Followed by the command to run the script:
+
+`python3 run.py`
+
+On Windows:
 
 `python run.py`
 
